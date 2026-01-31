@@ -1,6 +1,1 @@
-@HhsCaseTracker_HostAddress = http://localhost:5087
 
-GET {{HhsCaseTracker_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
