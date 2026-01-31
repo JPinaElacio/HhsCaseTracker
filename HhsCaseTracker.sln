@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HhsCaseTracker", "HhsCaseTracker\HhsCaseTracker.csproj", "{FDB3D7B5-462D-4216-B789-A7B2548A641E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDB3D7B5-462D-4216-B789-A7B2548A641E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB3D7B5-462D-4216-B789-A7B2548A641E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB3D7B5-462D-4216-B789-A7B2548A641E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB3D7B5-462D-4216-B789-A7B2548A641E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD081B93-7374-4727-A31D-0390C4A6D2C8}
+	EndGlobalSection
+EndGlobal
