@@ -33,6 +33,23 @@ function App() {
             .catch(err => console.error(err));
     }, []);
 
+    const deleteCase = async (id: number) => {
+        await api.delete(`/Case/${id}`);
+        setCases(cases.filter(c => c.caseId !== id));
+    };
+
+    const [editingCase, setEditingCase] = useState<Case | null>(null);
+
+    const updateCase = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (editCase) return;
+
+        await api.put(`/Case/${editingCase!.caseId}`, editingCase);
+
+        setCases(cases.map(c => c.caseId === editingCase!.caseId ? editingCase! : c));
+        setEditingCase(null);
+    };
+
     return (
         <div style={{ padding: "20px" }}>
             <h1>HHS Case Tracker</h1>
@@ -48,10 +65,26 @@ function App() {
                 <button type="submit">Create Case</button>
             </form>
 
+            {editingCase && (
+        <form onSubmit={updateCase}>
+            <h3>Edit Case</h3>
+            <input value={editingCase.title} onChange={e => setEditingCase({...editingCase, title: e.target.value})} />
+            <input value={editingCase.description} onChange={e => setEditingCase({...editingCase, description: e.target.value})} />
+            <input value={editingCase.department} onChange={e => setEditingCase({...editingCase, department: e.target.value})} />
+            <select value={editingCase.status} onChange={e => setEditingCase({...editingCase, status: e.target.value})}>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+            </select>
+            <button type="submit">Save</button>
+            <button type="button" onClick={() => setEditingCase(null)}>Cancel</button>
+        </form>
+        )}
+
             <ul>
                 {cases.map(c => (
                     <li key={c.caseId}>
-                        <strong>{c.title}</strong> — {c.department} — {c.status}
+                        <strong>{c.title}</strong> ï¿½ {c.department} ï¿½ {c.status}
                     </li>
                 ))}
             </ul>
