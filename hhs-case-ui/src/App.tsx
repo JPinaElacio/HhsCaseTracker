@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "./api.ts";
 import type { Case } from "./types.ts";
+import "./App.css";
 
 function App() {
     const [cases, setCases] = useState<Case[]>([]);
@@ -52,8 +53,8 @@ function App() {
 
     return (
         <div style={{ padding: "20px" }}>
-            <h1>HHS Case Tracker</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 id="main-title" >HHS Case Tracker</h1>
+            <form id="new-Case" onSubmit={handleSubmit}>
                 <input placeholder="Title" onChange={e => setNewCase({ ...NewCase, title: (e.target as HTMLInputElement).value })} />
                 <input placeholder="Description" onChange={e => setNewCase({ ...NewCase, description: (e.target as HTMLInputElement).value })} />
                 <input placeholder="Department" onChange={e => setNewCase({ ...NewCase, department: (e.target as HTMLInputElement).value })} />
@@ -71,7 +72,7 @@ function App() {
             <input value={editingCase.title} onChange={e => setEditingCase({...editingCase, title: e.target.value})} />
             <input value={editingCase.description} onChange={e => setEditingCase({...editingCase, description: e.target.value})} />
             <input value={editingCase.department} onChange={e => setEditingCase({...editingCase, department: e.target.value})} />
-            <select value={editingCase.status} onChange={e => setEditingCase({...editingCase, status: e.target.value})}>
+            <select value={editingCase.status} onChange={e => setEditingCase({...editingCase, status: e.target.value as string})}>
             <option>Open</option>
             <option>In Progress</option>
             <option>Resolved</option>
@@ -81,9 +82,9 @@ function App() {
         </form>
         )}
 
-            <ul>
+            <ul id="case-list">
                 {cases.map(c => (
-                    <li key={c.caseId}>
+                    <li id="case" key={c.caseId}>
                         <strong>{c.title}</strong> — {c.department} — {c.status}
                         <button onClick={() => setEditingCase(c)}>Edit</button>
                         <button onClick={() => deleteCase(c.caseId)}>Delete</button>
