@@ -42,7 +42,7 @@ function App() {
 
     const updateCase = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (editCase) return;
+        if (editingCase) return;
 
         await api.put(`/Case/${editingCase!.caseId}`, editingCase);
 
@@ -84,7 +84,9 @@ function App() {
             <ul>
                 {cases.map(c => (
                     <li key={c.caseId}>
-                        <strong>{c.title}</strong> � {c.department} � {c.status}
+                        <strong>{c.title}</strong> — {c.department} — {c.status}
+                        <button onClick={() => setEditingCase(c)}>Edit</button>
+                        <button onClick={() => deleteCase(c.caseId)}>Delete</button>
                     </li>
                 ))}
             </ul>
