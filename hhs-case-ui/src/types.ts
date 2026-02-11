@@ -3,5 +3,5 @@ export interface Case {
     title: string,
     description: string,
     department: string,
-    status: String;
+    status: string;
 }
